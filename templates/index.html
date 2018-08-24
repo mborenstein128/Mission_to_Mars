@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 align=center>Mission To Mars</h1>
+            <p align=center><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+
+        </div>
+
+            {% for data in mars_data %}
+                <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Latest Mars News</h2>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-subtitle">{{ data.news_title }}</h3>
+                                <p class="card-text">{{ data.news_paragraph }} </p>
+                            </div>
+                        </div>
+                </div>
+                <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2>Featured Mars Image</h2>
+                                    </div>
+                                    <img class="card-img-bottom img-responsive" src={{ data.featured_image }} alt="Featured Mars Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h2>Current Mars Weather</h2>
+                                        <p>{{ data.weather }}</p>
+                                    </div>
+                                </div>
+                                <div class="card border-dark">
+                                        <div class="card-header">
+                                            <h2>Mars Facts</h2>
+                                        </div>
+                                        <table>{{ data.mars_stats|safe }}</table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <h2 align="center">Hemispheres of Mars</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src={{ data.hempisphere_images[0]["img_url"] }}>
+                                    <div class="card-footer">
+                                        <h3 align="center">{{ data.hempisphere_images[0]["title"] }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src={{ data.hempisphere_images[1]["img_url"] }}>
+                                    <div class="card-footer">
+                                        <h3 align="center">{{ data.hempisphere_images[1]["title"] }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src={{ data.hempisphere_images[2]["img_url"] }}>
+                                    <div class="card-footer">
+                                        <h3 align="center">{{ data.hempisphere_images[2]["title"] }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src={{ data.hempisphere_images[3]["img_url"] }}>
+                                    <div class="card-footer">
+                                        <h3 align="center">{{ data.hempisphere_images[3]["title"] }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            {% endfor %}
+
+           
+
+</body>
+
+</html>
